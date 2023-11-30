@@ -65,4 +65,14 @@ export class JobDataService {
     jobsList.push(job);
     done(job);
   }
+
+  deleteJob(id: string, done: (err: string|null, success: string|null) => void) {
+    let index = jobsList.findIndex(job => job.id == id);
+    if (index === -1) {
+      done("Job not found", null);
+    } else {
+      jobsList.splice(index, 1);
+      done(null, `Job ${id} successfully deleted!!`)
+    }
+  }
 }
