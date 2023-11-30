@@ -25,6 +25,7 @@ export class Job {
   get applicationTracker(): string { return this.#applicationTracker }
   get dateApplied(): Date { return this.#dateApplied }
 
+  set id(id: string) { this.#_id = id }
   set jobName(jobName: string) { this.#jobName = jobName }
   set company(company: string) { this.#company = company }
   set foundOn(foundOn: string) { this.#foundOn = foundOn }

@@ -1,3 +1,6 @@
+<div class="my-3">
+    <button class="btn btn-primary mx-3" (click)="open(demoModal)">Add Job</button>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -24,3 +27,66 @@
         </tr>
     </tbody>
 </table>
+
+<ng-template #demoModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Job</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <form [formGroup]="newJobForm" (submit)="addJob()">
+        <div class="modal-body">
+            <div *ngIf="formIsInvalid" class="text-danger">Enter all required fields</div>
+            <div class="form-group">
+                <label for="jobName">Job Name</label>
+                <div class="input-group">
+                    <input id="jobName" name="jobName" class="form-control" placeholder="Job Name" type="text" formControlName="jobName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <div class="input-group">
+                    <input id="company" name="company" class="form-control" placeholder="Company" type="text" formControlName="company" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="foundOn">Found On</label>
+                <div class="input-group">
+                    <input id="foundOn" name="foundOn" class="form-control" placeholder="Found On" type="text" formControlName="foundOn">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Job Description</label>
+                <div class="input-group">
+                    <input id="jobDescription" name="jobDescription" class="form-control" placeholder="Job Description"
+                        type="text" formControlName="jobDescription" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="website">Website</label>
+                <div class="input-group">
+                    <input id="website" name="website" class="form-control" placeholder="Website" type="url" formControlName="website">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="applicationTracker">Application Tracker</label>
+                <div class="input-group">
+                    <input id="applicationTracker" name="applicationTracker" class="form-control"
+                        placeholder="Application Tracker" type="text" formControlName="applicationTracker">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateApplied">Date Applied</label>
+                <div class="input-group">
+                    <input id="dateApplied" name="dateApplied" class="form-control" placeholder="yyyy-mm-dd"
+                        ngbDatepicker #dp="ngbDatepicker" formControlName="dateApplied" required>
+                    <button type="button" class="btn btn-outline-secondary bi bi-calendar"
+                        (click)="dp.toggle()"></button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-dark">Save</button>
+        </div>
+    </form>
+</ng-template>
