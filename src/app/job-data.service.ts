@@ -55,4 +55,8 @@ export class JobDataService {
   getJobs():Job[] {
     return jobsList;
   }
+
+  getJob(id: string):Job | undefined{
+    return jobsList.find(job => job.id === id);
+  }
 }
