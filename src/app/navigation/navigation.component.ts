@@ -7,10 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-  constructor(private modalService: NgbModal) {
+  constructor() {
   }
 
-  public open(modal: any): void {
-    this.modalService.open(modal);
-  }
+
 }

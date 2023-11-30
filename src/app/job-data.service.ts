@@ -59,4 +59,10 @@ export class JobDataService {
   getJob(id: string):Job | undefined{
     return jobsList.find(job => job.id === id);
   }
+
+  addJob(job: Job, done: (job: Job) => void) {
+    job.id = (Math.random() * 10).toString();
+    jobsList.push(job);
+    done(job);
+  }
 }
